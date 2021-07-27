@@ -6,6 +6,8 @@
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
 // @grant        none
+// @supportURL   https://github.com/BlackPhoenix/MythWeaversStarWars5e/issues
+// @homepageURL  https://github.com/BlackPhoenix/MythWeaversStarWars5e
 //
 // This script will trigger only if:
 //   - the sheet is for DND 5e
