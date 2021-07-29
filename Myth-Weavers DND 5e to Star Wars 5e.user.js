@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
@@ -11,7 +11,10 @@
 //
 // This script will trigger only if:
 //   - the sheet is for DND 5e
-//   - the diety value is "Star Wars"
+//   - the diety value is "Star Wars" (not case-sensitive)
+//
+// Changelog:
+// 2021/07/28:  Changed check of the diety value to be case-insensitive
 // ==/UserScript==
 
 (function() {
@@ -21,7 +24,7 @@
     setTimeout(function() {
         // Validate that we are working on a DND 5e sheet:
         if(document.title.includes(":: Dungeons & Dragons 5e ::") &&
-            document.getElementsByName("deity")[0].value == "Star Wars") {
+            document.getElementsByName("deity")[0].value.toUpperCase() == "STAR WARS") {
 
             // Change "Cantrips" to "At-Will"
             var cantrips = document.getElementById("cantrips");
