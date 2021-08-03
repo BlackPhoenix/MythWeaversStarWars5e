@@ -6,7 +6,7 @@ Once installed, set the "Deity" on your character sheet to "Star Wars":
 
 ![Diety set to "Star Wars"](documentation/dietyStarWars.png)
 
-Then, reload your page. The script kicks in about 2 seconds after the page is loaded.
+Then, reload your page.
 
 Before | After
 --- | ---
