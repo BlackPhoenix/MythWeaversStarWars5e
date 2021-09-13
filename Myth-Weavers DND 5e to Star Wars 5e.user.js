@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.45
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
@@ -17,6 +17,7 @@
 // Changelog:
 // 2021/07/28:  Changed check of the diety value to be case-insensitive
 // 2021/08/03:  Complete re-write using waitForKeyElements rather than a timeout
+// 2021/08/18:  Added validating that this is a D&D 5e sheet using the document title
 // ==/UserScript==
 
 // Wait for the deity input to be available, then go from there.
@@ -26,14 +27,16 @@ waitForKeyElements(
     );
 
 function StartConversion(jNode) {
-    // Check that deity contains "Star Wars"
-    if(jNode[0].value.toUpperCase() == "STAR WARS") {
-        // It does, so let's fire the various changes once the relevant elements are there (which should be immediate)
-        waitForKeyElements("#cantrips", ChangeCantrips);
-        waitForKeyElements("input[name='history_cc']", HistoryToLore);
-        waitForKeyElements("input[name='arcana_cc']", ArcanaToTechnology);
-        waitForKeyElements("input[name='religion_cc']", ReligionToPiloting);
-        waitForKeyElements("#spellbook", Spellbook);
+    if(document.title.includes(":: Dungeons & Dragons 5e ::")) {
+        // Check that deity contains "Star Wars"
+        if(jNode[0].value.toUpperCase() == "STAR WARS") {
+            // It does, so let's fire the various changes once the relevant elements are there (which should be immediate)
+            waitForKeyElements("#cantrips", ChangeCantrips);
+            waitForKeyElements("input[name='history_cc']", HistoryToLore);
+            waitForKeyElements("input[name='arcana_cc']", ArcanaToTechnology);
+            waitForKeyElements("input[name='religion_cc']", ReligionToPiloting);
+            waitForKeyElements("#spellbook", Spellbook);
+        }
     }
 }
 
