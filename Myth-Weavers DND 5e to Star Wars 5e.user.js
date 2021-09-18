@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.45
+// @version      0.5
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
@@ -18,6 +18,7 @@
 // 2021/07/28:  Changed check of the diety value to be case-insensitive
 // 2021/08/03:  Complete re-write using waitForKeyElements rather than a timeout
 // 2021/08/18:  Added validating that this is a D&D 5e sheet using the document title
+// 2021/09/17:  Hide all coins except 1, which is replaced by Credits.
 // ==/UserScript==
 
 // Wait for the deity input to be available, then go from there.
@@ -36,6 +37,8 @@ function StartConversion(jNode) {
             waitForKeyElements("input[name='arcana_cc']", ArcanaToTechnology);
             waitForKeyElements("input[name='religion_cc']", ReligionToPiloting);
             waitForKeyElements("#spellbook", Spellbook);
+
+            CurrencyToCredits();
         }
     }
 }
@@ -84,5 +87,39 @@ function Spellbook(jNode) {
     var preparedList = spellbook.getElementsByClassName("prepared");
     for (i = 0; i < preparedList.length; i++) {
         preparedList[i].style.display = "none";
+    }
+}
+
+function CurrencyToCredits() {
+    // Change the D&D money headers (cp, sp, ep, gp, pp) into a single one: Credits
+    document.getElementsByClassName("currency")[0].firstElementChild.firstElementChild.innerHTML = "<tr><th colspan=5 align=\"left\">Credits</th></tr>";
+
+    // Get the various coin values. If only one contains a value, expand that field and hide the rest.
+    var cp = document.getElementsByName("currency_cp")[0];
+    var sp = document.getElementsByName("currency_sp")[0];
+    var ep = document.getElementsByName("currency_ep")[0];
+    var gp = document.getElementsByName("currency_gp")[0];
+    var pp = document.getElementsByName("currency_pp")[0];
+
+    var toExpand = [];
+    if (cp.value > "") { toExpand.push(cp); }
+    if (sp.value > "") { toExpand.push(sp); }
+    if (ep.value > "") { toExpand.push(ep); }
+    if (gp.value > "") { toExpand.push(gp); }
+    if (pp.value > "") { toExpand.push(pp); }
+
+    // If no value was filled in, we will expand Gold Pieces.
+    if (toExpand.length == 0) { toExpand.push(gp); }
+
+    // If we have only 1 field with a value, we'll expand it and hide the others.
+    if (toExpand.length == 1) {
+        var currencyList = [cp, sp, ep, gp, pp];
+        for (var i = 0; i < currencyList.length; i++) {
+            if (toExpand.includes(currencyList[i])) {
+                currencyList[i].classList.replace("span1", "span3");
+            } else {
+                currencyList[i].style.display = "none";
+            }
+        }
     }
 }
