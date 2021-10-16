@@ -9,6 +9,7 @@
 // @grant        none
 // @supportURL   https://github.com/BlackPhoenix/MythWeaversStarWars5e/issues
 // @homepageURL  https://github.com/BlackPhoenix/MythWeaversStarWars5e
+// @icon         https://www.google.com/s2/favicons?domain=myth-weavers.com
 //
 // This script will trigger only if:
 //   - the sheet is for DND 5e
