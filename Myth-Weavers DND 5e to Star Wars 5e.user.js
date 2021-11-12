@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
@@ -9,7 +9,7 @@
 // @grant        none
 // @supportURL   https://github.com/BlackPhoenix/MythWeaversStarWars5e/issues
 // @homepageURL  https://github.com/BlackPhoenix/MythWeaversStarWars5e
-// @icon         https://www.google.com/s2/favicons?domain=myth-weavers.com
+// @icon         https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://myth-weavers.com&size=16
 //
 // This script will trigger only if:
 //   - the sheet is for DND 5e
