@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.61
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheet.html
@@ -10,7 +10,8 @@
 // @supportURL   https://github.com/BlackPhoenix/MythWeaversStarWars5e/issues
 // @homepageURL  https://github.com/BlackPhoenix/MythWeaversStarWars5e
 // @icon         https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://myth-weavers.com&size=16
-//
+// ==/UserScript==
+
 // This script will trigger only if:
 //   - the sheet is for DND 5e
 //   - the diety value is "Star Wars" (not case-sensitive)
@@ -20,7 +21,7 @@
 // 2021/08/03:  Complete re-write using waitForKeyElements rather than a timeout
 // 2021/08/18:  Added validating that this is a D&D 5e sheet using the document title
 // 2021/09/17:  Hide all coins except 1, which is replaced by Credits.
-// ==/UserScript==
+// 2023/01/09:  Moved this comment block outside of the UserScript section.
 
 // Wait for the deity input to be available, then go from there.
 waitForKeyElements(
