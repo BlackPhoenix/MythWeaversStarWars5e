@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.61
+// @version      0.62
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheets/?id=*
