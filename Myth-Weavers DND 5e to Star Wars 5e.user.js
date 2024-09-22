@@ -4,7 +4,7 @@
 // @version      0.61
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
-// @match        https://www.myth-weavers.com/sheet.html
+// @match        https://www.myth-weavers.com/sheets/?id=*
 // @require      https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant        none
 // @supportURL   https://github.com/BlackPhoenix/MythWeaversStarWars5e/issues
