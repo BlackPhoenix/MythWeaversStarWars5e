@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Myth-Weavers DND 5e to Star Wars 5e
 // @namespace    http://tampermonkey.net/
-// @version      0.62
+// @version      0.63
 // @description  Adapt Myth-Weavers' DND 5e character sheet to Star Wars 5e
 // @author       BlackPhoenix
 // @match        https://www.myth-weavers.com/sheets/?id=*
@@ -22,6 +22,7 @@
 // 2021/08/18:  Added validating that this is a D&D 5e sheet using the document title
 // 2021/09/17:  Hide all coins except 1, which is replaced by Credits.
 // 2023/01/09:  Moved this comment block outside of the UserScript section.
+// 2024/09/22:  Adjusted for new Myth-Weavers
 
 // Wait for the deity input to be available, then go from there.
 waitForKeyElements(
@@ -68,21 +69,21 @@ function ReligionToPiloting(jNode) {
 function Spellbook(jNode) {
     // Change the Level 1 "Slots / Expanded" into "Force Points / Max"
     var spellbook = jNode[0]
-    var lvl1slots = spellbook.getElementsByClassName("span4")[0].getElementsByTagName("small")[0];
+    var lvl1slots = spellbook.getElementsByClassName("bs2-span4")[0].getElementsByTagName("small")[0];
     lvl1slots.childNodes[0].data = "Force Points";
     lvl1slots.childNodes[2].data = "Max";
 
     // Change the Level 3 "Slots / Expanded" into "Tech Points / Max"
-    var lvl3slots = spellbook.getElementsByClassName("span4")[2].getElementsByTagName("small")[0];
+    var lvl3slots = spellbook.getElementsByClassName("bs2-span4")[2].getElementsByTagName("small")[0];
     lvl3slots.childNodes[0].data = "Tech Points";
     lvl3slots.childNodes[2].data = "Max";
 
     // Hide the Slots / Expanded from level 2
-    spellbook.getElementsByClassName("span4")[1].getElementsByTagName("small")[0].style.display = "none";
+    spellbook.getElementsByClassName("bs2-span4")[1].getElementsByTagName("small")[0].style.display = "none";
 
     // Hide the Slots / Expanded from levels 4 to 9
     for (var i = 3; i <= 8; i++) {
-        spellbook.getElementsByClassName("span4")[i].getElementsByTagName("small")[0].style.display = "none";
+        spellbook.getElementsByClassName("bs2-span4")[i].getElementsByTagName("small")[0].style.display = "none";
     }
 
     // Hide the "Prepared" line under each spell level's header
@@ -118,7 +119,7 @@ function CurrencyToCredits() {
         var currencyList = [cp, sp, ep, gp, pp];
         for (var i = 0; i < currencyList.length; i++) {
             if (toExpand.includes(currencyList[i])) {
-                currencyList[i].classList.replace("span1", "span3");
+                currencyList[i].classList.replace("bs2-span1", "bs2-span3");
             } else {
                 currencyList[i].style.display = "none";
             }
