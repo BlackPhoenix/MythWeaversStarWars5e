@@ -4,7 +4,7 @@ It is meant to be used with Myth-Weavers.com 's Dungeons & Dragons 5th Edition c
 sheet in your browser - nothing changes on Myth-Weavers' database. Therefore, a computer/browser without this script would still see the unmodified character sheet.
 
 - Install [TamperMonkey](https://www.tampermonkey.net/index.php?locale=en) for your browser
-- Install this script by [clicking here](https://github.com/BlackPhoenix/MythWeaversStarWars5e/raw/refs/heads/main/Myth-Weavers%20DND%205e%20to%20Star%20Wars%205e.user.js)
+- Install this script by [clicking here](https://github.com/BlackPhoenix/MythWeaversStarWars5e/raw/refs/heads/main/MythWeaversStarWars5e.user.js)
 
 Once installed, set the "Deity" on your character sheet to "Star Wars":
 
